@@ -105,6 +105,6 @@ alias gummit="zsh ~/utility-scripts/gummit.sh"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
 
-export PATH="$PATH:~/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
 
 quote
