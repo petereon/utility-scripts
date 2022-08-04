@@ -1,15 +1,5 @@
 #!/bin/zsh
 
-exit_code_is (){
-    if [ $? -ne $1 ]; then
-        echo "`$2` not found"
-        exit 1
-    fi
-}
-
-gum --help &>/dev/null
-exit_code_is 0 gum
-
 echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
 
 exit_if_130 (){
