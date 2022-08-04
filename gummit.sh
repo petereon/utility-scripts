@@ -4,7 +4,7 @@ echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
 
 exit_if_130 (){
     if  [ $? -eq 130 ]; then
-        echo "SIGINT caught! Exiting!" 
+        echo "​❌​ SIGINT caught! Exiting!" 
         exit 1
     fi
 }
@@ -27,4 +27,4 @@ exit_if_130
 echo Generated following command: $(echo git commit -m \"$SUMMARY\" -m \"$DESCRIPTION\" | lolcat)
 
 # Commit these changes
-gum confirm "Execute?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" || echo "Nothing commited!"
+gum confirm "Execute?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" || echo "​❌​ Nothing commited!"

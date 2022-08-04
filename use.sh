@@ -1,7 +1,7 @@
 #!/bin/sh
 
 descend_to_dirs(){
-    ls -a $dir && result=$(ls -a $dir | gum filter)
+    ls -a $dir && result=$(ls -a $dir | gum filter --indicator "​​📂​ " --placeholder "Search...")
 
     if [[ (-d "$dir/$result") && ($? -ne 130) ]]; then
         dir=$dir/$result
@@ -20,13 +20,13 @@ descend_to_dirs
 program=""
 
 if [ -f  "$dir/$result" ]; then
-    program=$(gum input --placeholder "Program to open the file with...")
+    program=$(gum input --placeholder "Program to open the file with..." --prompt "⚙️ ​ ")
 fi
 
 if [[ $program != "" ]]; then
     echo $program "$dir/$result"
     eval $program "$dir/$result"
 else
-    echo "SIGINT encountered, stopping!"
+    echo "​❌​ SIGINT encountered, stopping!"
     return
 fi
