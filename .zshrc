@@ -105,6 +105,8 @@ alias gummit="zsh ~/utility-scripts/gummit.sh"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
 alias open="source ~/utility-scripts/use.sh"
+alias clip="xclip -selection clipboard"
+alias hifi="history | gum filter"
 
 export PATH="$PATH:$HOME/.local/bin"
 

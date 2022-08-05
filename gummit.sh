@@ -1,13 +1,25 @@
 #!/bin/zsh
 
-echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
-
 exit_if_130 (){
     if  [ $? -eq 130 ]; then
         echo "​❌​ SIGINT caught! Exiting!" 
         exit 1
     fi
 }
+
+echo "📤 Adding files:"
+
+ADDED=$(git status --short | gum choose --no-limit)
+exit_if_130
+for file in $ADDED; do
+    echo git add $(echo $file | rev | cut -d ' ' -f1 | rev)
+    git add $(echo $file | rev | cut -d ' ' -f1 | rev)
+done
+
+
+echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
+
+
 
 TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert")
 exit_if_130
