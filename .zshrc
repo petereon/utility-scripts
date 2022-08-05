@@ -104,7 +104,7 @@ alias reload="source ~/.zshrc"
 alias gummit="zsh ~/utility-scripts/gummit.sh"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
-alias use="source ~/utility-scripts/use.sh"
+alias open="source ~/utility-scripts/use.sh"
 
 export PATH="$PATH:$HOME/.local/bin"
 
