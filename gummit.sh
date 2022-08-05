@@ -9,7 +9,7 @@ exit_if_130 (){
 
 echo "📤 Adding files:"
 
-ADDED=$(git status --short | gum choose --no-limit)
+ADDED=$(git status -s -u | gum choose --no-limit)
 exit_if_130
 for file in $ADDED; do
     echo git add $(echo $file | rev | cut -d ' ' -f1 | rev)
