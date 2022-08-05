@@ -10,6 +10,10 @@ exit_if_130 (){
 echo "📤 Adding files:"
 
 ADDED=$(git status -s -u | gum choose --no-limit)
+if [ $? -eq 1 ]; then
+    echo "​❌​ No files to add! Exiting!" 
+    exit 1
+fi
 exit_if_130
 for file in $ADDED; do
     echo git add $(echo $file | rev | cut -d ' ' -f1 | rev)
