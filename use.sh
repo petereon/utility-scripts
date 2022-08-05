@@ -24,9 +24,9 @@ if [ -f  "$dir/$result" ]; then
 fi
 
 if [[ $program != "" ]]; then
-    echo $program "$dir/$result"
-    eval $program "$dir/$result"
+    echo $program \"$dir/$result\"
+    eval $program \"$dir/$result\"
 else
-    echo "​❌​ SIGINT encountered, stopping!"
+    echo "​❌​ Error encountered, stopping!"
     return
 fi
