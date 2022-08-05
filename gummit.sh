@@ -38,5 +38,13 @@ exit_if_130
 
 echo Generated following command: $(echo git commit -m \"$SUMMARY\" -m \"$DESCRIPTION\" | lolcat)
 
+COMMITED=0
 # Commit these changes
-gum confirm "Execute?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" || echo "​❌​ Nothing commited!"
+gum confirm "Execute?" && COMMITED=1 && git commit -m "$SUMMARY" -m "$DESCRIPTION" || echo "​❌​ Nothing commited!"
+
+if [ $COMMITED -eq 1 ]; then
+    ORIGINS_TO_PUSH=$(gum confirm "Push?" && git remote | gum choose --no-limit)
+    for origin in $ORIGINS_TO_PUSH; do
+        git push -u $origin
+    done
+fi
