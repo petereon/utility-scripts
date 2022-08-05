@@ -7,7 +7,7 @@ exit_if_130 (){
     fi
 }
 
-echo "📤 Adding files:"
+echo "📤 Select files to add:"
 
 ADDED=$(git status -s -u | gum choose --no-limit)
 if [ $? -eq 1 ]; then
@@ -20,10 +20,7 @@ for file in $ADDED; do
     git add $(echo $file | rev | cut -d ' ' -f1 | rev)
 done
 
-
 echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
-
-
 
 TYPE=$(gum choose "fix" "feat" "docs" "style" "refactor" "test" "chore" "revert")
 exit_if_130
