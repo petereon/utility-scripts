@@ -107,7 +107,9 @@ alias quote="zsh ~/utility-scripts/quote.sh"
 alias open="source ~/utility-scripts/use.sh"
 alias clip="xclip -selection clipboard"
 alias hifi="history | gum filter"
+alias today="zsh ~/utility-scripts/today.sh"
 
 export PATH="$PATH:$HOME/.local/bin"
 
 quote
+today

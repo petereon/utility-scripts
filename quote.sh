@@ -6,3 +6,4 @@ then
 else
     cowthink $(curl -s http://palicanon.codebuckets.com.au/api/quote | jq ".text") | lolcat
 fi
+echo ""
