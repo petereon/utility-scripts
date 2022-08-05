@@ -43,7 +43,7 @@ COMMITED=0
 gum confirm "Execute?" && COMMITED=1 && git commit -m "$SUMMARY" -m "$DESCRIPTION" || echo "​❌​ Nothing commited!"
 
 if [ $COMMITED -eq 1 ]; then
-    ORIGINS_TO_PUSH=$(gum confirm "Push?" && echo "Select origins to push:" && git remote | gum choose --no-limit)
+    gum confirm "Push?" && echo "Select origin to push:" && ORIGINS_TO_PUSH=$(git remote | gum choose --no-limit)
     for origin in $ORIGINS_TO_PUSH; do
         echo git push -u $origin
         git push -u $origin
