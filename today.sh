@@ -1,2 +1,2 @@
 #!/bin/sh
-todoist-cli  list -f '(today|overdue)' -p | cut -d " " -f1 --complement | lolcat
+todoist-cli  todoist-cli list --filter '(overdue|today)' --order t
