@@ -105,7 +105,6 @@ alias gummit="zsh ~/utility-scripts/gummit.sh"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
 alias open="source ~/utility-scripts/use.sh"
-alias hifi="history | gum filter"
 alias today="zsh ~/utility-scripts/today.sh"
 alias clip="xclip -selection clipboard"
 
