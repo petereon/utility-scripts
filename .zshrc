@@ -105,11 +105,13 @@ alias gummit="zsh ~/utility-scripts/gummit.sh"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
 alias open="source ~/utility-scripts/use.sh"
-alias clip="xclip -selection clipboard"
 alias hifi="history | gum filter"
 alias today="zsh ~/utility-scripts/today.sh"
+alias clip="xclip -selection clipboard"
 
 export PATH="$PATH:$HOME/.local/bin"
+
+ls ~/.zsh_local_config/.localzshrc &> /dev/null && source ~/.zsh_local_config/.localzshrc
 
 quote
 today
