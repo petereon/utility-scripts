@@ -1,2 +1,2 @@
 #!/bin/sh
-todoist-cli list --filter '(overdue|today)' --order t
+todoist-cli list --filter '(overdue|today)' --order t --order p -s
