@@ -102,11 +102,13 @@ alias reload="source ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias gummit="zsh ~/utility-scripts/gummit.sh"
+alias gu="gummit"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
 alias open="source ~/utility-scripts/use.sh"
 alias today="zsh ~/utility-scripts/today.sh"
 alias clip="xclip -selection clipboard"
+alias todo="todoist-cli"
 
 export PATH="$PATH:$HOME/.local/bin"
 

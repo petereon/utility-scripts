@@ -12,11 +12,11 @@ if [[ "$*" == *"--add"* || "$*" == *"-"*"a"* || "$#" -eq 0 ]]; then
     echo "📤 Select files to add:"
 
     ADDED=$(git status -s -u | gum choose --no-limit)
+    exit_if_130
     if [ $? -eq 1 ]; then
         echo "​❌​ No files to add! Exiting!" 
         exit 1
     fi
-    exit_if_130
     for file in $ADDED; do
         echo git add $(echo $file | rev | cut -d ' ' -f1 | rev)
         git add $(echo $file | rev | cut -d ' ' -f1 | rev)
