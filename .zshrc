@@ -17,6 +17,7 @@ alias quote="zsh ~/utility-scripts/quote.sh"
 alias open="source ~/utility-scripts/open.sh"
 alias today="zsh ~/utility-scripts/today.sh"
 alias clip="xclip -selection clipboard"
+alias gunk="git diff | dunk"
 alias todo="todoist-cli"
 
 export PATH="$PATH:$HOME/.local/bin"
