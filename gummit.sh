@@ -17,12 +17,16 @@ if [[ "$*" == *"--add"* || "$*" == *"-"*"a"* || "$#" -eq 0 ]]; then
         echo "​❌​ No files to add! Exiting!" 
         exit 1
     fi
+    files=""
     for file in $ADDED; do
-        echo git add $(echo $file | rev | cut -d ' ' -f1 | rev)
-        git add $(echo $file | rev | cut -d ' ' -f1 | rev)
+        files+="$(printf '%s' $file | rev | cut -d ' ' -f1 | rev | tr '\n' ' ' )"
     done
+    ADD_COMMAND="git add $files"
+    echo Executed: "$(echo $ADD_COMMAND | lolcat)"
+    eval $ADD_COMMAND
 fi
 
+FAILED=0
 if [[ "$*" == *"--commit"* || "$*" == *"-"*"c"* || "$#" -eq 0 ]]; then
     echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
 
@@ -41,15 +45,20 @@ if [[ "$*" == *"--commit"* || "$*" == *"-"*"c"* || "$#" -eq 0 ]]; then
     gum confirm "Add long description?" && DESCRIPTION=$(gum write --placeholder "Details of this change")
     exit_if_130
 
-    echo Generated following command: $(echo git commit -m \"$SUMMARY\" -m \"$DESCRIPTION\" | lolcat)
+    COMMIT_COMMAND="git commit -m \"$SUMMARY\" -m \"$DESCRIPTION\""
 
-    FAILED=0
+    echo Generated following command: $(echo $COMMIT_COMMAND | lolcat)
     # Commit these changes
-    gum confirm "Execute?" && git commit -m "$SUMMARY" -m "$DESCRIPTION" || (echo "​❌​ Nothing commited!" && FAILED=1)
+    gum confirm "Execute?" && eval $COMMIT_COMMAND || FAILED=1 && echo "​❌​ Nothing commited!"
+
+    if [ $FAILED -eq 1 ]; then
+        gum confirm "Retry?" && eval $ADD_COMMAND && eval $COMMIT_COMMAND || (echo "​❌​ Nothing commited!" && FAILED=1)
+    fi
+
 fi
 
 if [[ "$*" == *"--push"* || "$*" == *"-"*"p"* || "$#" == 0 ]]; then
-    if [[ $FAILED -eq 0 ]]; then
+    if [ $FAILED -eq 0 ]; then
         gum confirm "Push?" && echo "Select origin to push:" && ORIGINS_TO_PUSH=$(git remote | gum choose --no-limit)
         for origin in $ORIGINS_TO_PUSH; do
             echo git push -u $origin

@@ -2,7 +2,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="ys"
 
-plugins=(git docker kubectl zsh-syntax-highlighting)
+plugins=(git docker kubectl zsh-syntax-highlighting dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -10,7 +10,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="code ~/.zshrc"
 alias reload="source ~/.zshrc"
 
-alias gummit="zsh ~/utility-scripts/gummit.sh"
+alias gummit="source ~/utility-scripts/gummit.sh"
 alias gu="gummit"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
