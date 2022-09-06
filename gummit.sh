@@ -49,10 +49,11 @@ if [[ "$*" == *"--commit"* || "$*" == *"-"*"c"* || "$#" -eq 0 ]]; then
 
     echo Generated following command: $(echo $COMMIT_COMMAND | lolcat)
     # Commit these changes
-    gum confirm "Execute?" && eval $COMMIT_COMMAND || FAILED=1 && echo "​❌​ Nothing commited!"
+    gum confirm "Execute?" && eval $COMMIT_COMMAND || FAILED=1
 
     if [ $FAILED -eq 1 ]; then
-        gum confirm "Retry?" && eval $ADD_COMMAND && eval $COMMIT_COMMAND || (echo "​❌​ Nothing commited!" && FAILED=1)
+        echo "​❌​ Nothing commited!"
+        gum confirm "Retry?" && eval $ADD_COMMAND && eval $COMMIT_COMMAND || FAILED=1
     fi
 
 fi
@@ -64,5 +65,7 @@ if [[ "$*" == *"--push"* || "$*" == *"-"*"p"* || "$#" == 0 ]]; then
             echo git push -u $origin
             git push -u $origin
         done
+    else
+        echo "​❌​ Nothing commited!"
     fi
 fi
