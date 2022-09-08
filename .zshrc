@@ -10,7 +10,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="code ~/.zshrc"
 alias reload="source ~/.zshrc"
 
-alias gummit="source ~/utility-scripts/gummit.sh"
+alias gummit="zsh ~/utility-scripts/gummit.sh"
 alias gu="gummit"
 alias shell="zsh ~/utility-scripts/shell.sh"
 alias quote="zsh ~/utility-scripts/quote.sh"
