@@ -53,7 +53,7 @@ if [[ "$*" == *"--commit"* || "$*" == *"-"*"c"* || "$#" -eq 0 ]]; then
 
     if [ $FAILED -eq 1 ]; then
         echo "​❌​ Nothing commited!"
-        gum confirm "Retry?" && eval $ADD_COMMAND && eval $COMMIT_COMMAND || FAILED=1
+        gum confirm "Retry?" && eval $ADD_COMMAND && eval $COMMIT_COMMAND && FAILED=0 || FAILED=1
     fi
 
 fi
