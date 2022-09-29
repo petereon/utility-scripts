@@ -9,7 +9,7 @@ exit_if_130 (){
 }
 
 reset_if_was_added (){
-    if [[ -v$RESET_COMMAND ]]; then
+    if [[ -v RESET_COMMAND ]]; then
         gum confirm "Unstage files?" && echo "Unstaging staged files!" && eval $RESET_COMMAND > /dev/null
     fi 
 }
@@ -19,7 +19,7 @@ if [[ "$*" == *"--add"* || "$*" == *"-"*"a"* || "$#" -eq 0 ]]; then
     echo "📤 Select files to add:"
 
     STATUS=$(git status -s -u)
-    if [ $? -eq 1 ]; then
+    if [ -z $STATUS ]; then
         echo "​❌​ No files to add! Exiting!" 
         exit 1
     fi
