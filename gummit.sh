@@ -14,7 +14,26 @@ reset_if_was_added (){
     fi 
 }
 
-if [[ "$*" == *"--add"* || "$*" == *"-"*"a"* || "$#" -eq 0 ]]; then
+if [[ "$*" == *"--help"* || "$*" == *"-h"* || "$#" -eq 0 ]]; then
+    echo "usage: gummit [-a | --add] [-c | --commit] [-p | --push]"
+    echo
+    echo "flags:"
+    echo "\t-a (--add):\t\tInteractively add files"
+    echo "\t-c (--commit):\t\tInteractively commit files"
+    echo "\t-p (--push):\t\tInteractively push files"
+    echo
+    echo "notes:"
+    echo "\t'gummit' will execute the whole add->commit->push sequence unless flags are specified."
+    echo "\tIf however at least one flag is specified it will only execute the specified steps."
+    echo
+    echo "\t\t Example: 'gummit -c -p' will execute commit and push without adding."
+    echo
+    echo "\t'gummit' retries the commit and stages automatically if there are changes, this is"
+    echo "\tespecially beneficial if you have a pre-commit that cleans up the files."
+
+fi
+
+if [[ "$*" == *"--add"* || "$*" == *"-a"* || "$#" -eq 0 ]]; then
 
     echo "📤 Select files to add:"
 
@@ -38,7 +57,7 @@ if [[ "$*" == *"--add"* || "$*" == *"-"*"a"* || "$#" -eq 0 ]]; then
 fi
 
 FAILED=0
-if [[ "$*" == *"--commit"* || "$*" == *"-"*"c"* || "$#" -eq 0 ]]; then
+if [[ "$*" == *"--commit"* || "$*" == *"-c"* || "$#" -eq 0 ]]; then
     echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
 
     TYPE=$(gum choose "fix" "feat" "docs" "test" "style" "refactor" "build" "ci" "perf" "revert")
@@ -69,7 +88,7 @@ if [[ "$*" == *"--commit"* || "$*" == *"-"*"c"* || "$#" -eq 0 ]]; then
 
 fi
 
-if [[ "$*" == *"--push"* || "$*" == *"-"*"p"* || "$#" == 0 ]]; then
+if [[ "$*" == *"--push"* || "$*" == *"-p"* || "$#" == 0 ]]; then
     if [ $FAILED -eq 0 ]; then
         gum confirm "Push?" && echo "Select origin to push:" && ORIGINS_TO_PUSH=$(git remote | gum choose --no-limit)
         for origin in $ORIGINS_TO_PUSH; do
