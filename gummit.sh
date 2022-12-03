@@ -14,7 +14,7 @@ reset_if_was_added (){
     fi 
 }
 
-if [[ "$*" == *"--help"* || "$*" == *"-h"* || "$#" -eq 0 ]]; then
+if [[ "$*" == *"--help"* || "$*" == *"-h"* ]]; then
     echo "usage: gummit [-a | --add] [-c | --commit] [-p | --push]"
     echo
     echo "flags:"
