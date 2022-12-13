@@ -60,7 +60,7 @@ FAILED=0
 if [[ "$*" == *"--commit"* || "$*" == *"-c"* || "$#" -eq 0 ]]; then
     echo "\n" 🔧 Creating an $(echo "(un)conventional" | lolcat)commit! "\n"
 
-    TYPE=$(gum choose "fix" "feat" "docs" "test" "style" "refactor" "build" "ci" "perf" "revert")
+    TYPE=$(gum choose "feat" "fix" "test" "chore" "refactor" "docs" "build" "ci" )
     exit_if_130 reset_if_was_added
     SCOPE=$(gum input --placeholder "scope")
     exit_if_130 reset_if_was_added
