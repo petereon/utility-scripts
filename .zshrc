@@ -20,6 +20,6 @@ alias clip="xclip -selection clipboard"
 alias gunk="git diff | dunk"
 alias todo="todoist-cli"
 
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
 
 ls ~/.zsh_local_config/.localzshrc &> /dev/null && source ~/.zsh_local_config/.localzshrc
