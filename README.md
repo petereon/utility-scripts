@@ -37,5 +37,5 @@ It supports one command line argument which can specify the path from which to b
 **f** is a life-saver in large codebases. It provides an unreasonably fast way to do **full**-text searching - and when I say **full**, boy I mean it. You can search file names, paths and contents all in the same simple interface with interactive selection and everything. All with exact searching, inverse filtering, fuzzy searching, regex and all the goodies `rg` provides.
 
 **f** requires two binaries to be in path:
-- [fzf](https://github.com/junegunn/fzf)
-- [rg](https://github.com/BurntSushi/ripgrep)
+- [`fzf`](https://github.com/junegunn/fzf)
+- [`rg`](https://github.com/BurntSushi/ripgrep)
