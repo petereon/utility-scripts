@@ -2,24 +2,35 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="ys"
 
-plugins=(git docker kubectl zsh-syntax-highlighting dotenv)
+plugins=(git kubectl zsh-syntax-highlighting dotenv)
 
 source $ZSH/oh-my-zsh.sh
 
+add-to-path() {
+  for p in $@; do
+      export PATH="$p:$PATH"
+  done
+}
+
+add-to-path \
+    "$HOME/.local/bin" \
+    "$HOME/.ghcup/bin"\
+    "$HOME/.cabal/bin" \
+    "$HOME/.cargo/bin"  \
+    "$HOME/.nimble/bin"  \
+    "$HOME/go/bin"  \
+    "$HOME/esp/xtensa-esp32-elf/bin"
 
 alias zshconfig="code ~/.zshrc"
 alias reload="source ~/.zshrc"
 
 alias gummit="zsh ~/utility-scripts/gummit.sh"
-alias gu="gummit"
-alias shell="zsh ~/utility-scripts/shell.sh"
-alias quote="zsh ~/utility-scripts/quote.sh"
-alias inspector="source ~/utility-scripts/open.sh"
-alias today="zsh ~/utility-scripts/today.sh"
 alias clip="xclip -selection clipboard"
-alias gunk="git diff | dunk"
-alias todo="todoist-cli"
-
-export PATH="$PATH:$HOME/.local/bin:$HOME/.cargo/bin"
+alias cd="z"
+alias cdi="zi"
+alias ls="exa"
 
 ls ~/.zsh_local_config/.localzshrc &> /dev/null && source ~/.zsh_local_config/.localzshrc
+[ -f "/Users/macbookpro/.ghcup/env" ] && source "/Users/macbookpro/.ghcup/env" # ghcup-env. $HOME/.ghcup/env
+
+eval "$(zoxide init zsh)"
