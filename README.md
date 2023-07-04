@@ -2,7 +2,7 @@
 
 I store all my glamorous `zsh` utility scripts in this repository :woman_dancing:
 
-## gummit.sh 
+## gummit.sh :inbox_tray:
 > because gum + commit, huehue, get it?
 
 **Gummit** is a little interactive Git CLI making conventional commits easy (also mandatory).
@@ -33,17 +33,9 @@ It supports one command line argument which can specify the path from which to b
 
 - [`gum`](https://github.com/charmbracelet/gum)
 
-## quote.sh
-**Quote** outputs either a `cowsay` with programming quote or `cowthink` with a buddhist quote and pipes both through `lolcat`.
+## f.sh :mag:
+**f** is a life-saver in large codebases. It provides an unreasonably fast way to do **full**-text searching - and when I say **full**, boy I mean it. You can search file names, paths and contents all in the same simple interface with interactive selection and everything. All with exact searching, inverse filtering, fuzzy searching, regex and all the goodies `rg` provides.
 
-**Quote** depends on two binaries being available in path:
-
-- [`lolcat`](https://github.com/busyloop/lolcat)
-- [`cowsay`](https://github.com/piuccio/cowsay)
-
-## today.sh
-**Today** outputs today's task from Todoist.
-
-**Today** depends on one binary being available in path:
-
-- [`todoist-cli`](https://github.com/petereon/todoist-cli)
+**f** requires two binaries to be in path:
+- [fzf](https://github.com/junegunn/fzf)
+- [rg](https://github.com/BurntSushi/ripgrep)
