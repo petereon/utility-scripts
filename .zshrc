@@ -30,7 +30,9 @@ alias cd="z"
 alias cdi="zi"
 alias ls="exa"
 
-ls ~/.zsh_local_config/.localzshrc &> /dev/null && source ~/.zsh_local_config/.localzshrc
+ls ~/.localzshrc &> /dev/null && source ~/.localzshrc
 [ -f "/Users/macbookpro/.ghcup/env" ] && source "/Users/macbookpro/.ghcup/env" # ghcup-env. $HOME/.ghcup/env
+
+source ~/utility-scripts/f.sh
 
 eval "$(zoxide init zsh)"
