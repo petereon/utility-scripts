@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+bash -c 'trufflehog git file://. --since-commit HEAD --branch $(git branch --show-current) --only-verified --fail'
+
+# Tools to check for common issues
+has_err=false
+
+for file in $(git diff --diff-filter=d --name-only --cached); do
+	python3 ~/utility-scripts/hooks/end_of_file_fixer.py "$file"
+	python3 ~/utility-scripts/hooks/trailing_whitespace_fixer.py "$file"
+	python3 ~/utility-scripts/hooks/mixed_line_ending.py "$file"
+
+	if [[ $file == *".env"* ]]; then
+		echo "Error: Not committing .env file"
+		exit 1
+	fi
+	typos "$file"
+	case "$file" in
+	*.py*)
+		python3 ~/utility-scripts/hooks/check_ast.py "$file"
+		ruff "$file" || has_err=true
+
+		;;
+	*.go*)
+		gofmt -w -l "$file" || has_err=true
+		;;
+	*.zsh*)
+		shfmt -l -s -w "$file"
+		shellcheck -f diff "$file" | git apply
+		;;
+	esac
+done
+
+if [ "$has_err" = true ] && ! [ "$LINTER_ERRORS" = 'soft' ]; then
+	exit 1
+fi
+
+# Check for unstaged changes, relevant mainly when hooks above make formatting changes to the files
+unstaged_changes=0
+for file in $(git diff --name-only --cached); do
+
+	if [[ -n $(git --no-pager diff "$file") ]]; then
+		((unstaged_changes += 1))
+		echo "Error: Unstaged changes detected in: $file"
+	fi
+done
+
+if ((unstaged_changes > 0)); then
+	exit 1
+fi
+
+# Check if trying to commit to master
+if [[ "$(git branch --show-current)" == "master" ]]; then
+	gum confirm "Are you sure you want to commit to master?" || exit 1
+	# exit 1
+fi
