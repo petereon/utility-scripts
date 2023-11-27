@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-bash -c 'trufflehog git file://. --since-commit HEAD --branch $(git branch --show-current) --only-verified --fail'
+trufflehog git file://. --since-commit HEAD --branch $(git branch --show-current) --only-verified --fail
 
 # Tools to check for common issues
 has_err=false
