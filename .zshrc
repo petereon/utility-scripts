@@ -21,7 +21,7 @@ add-to-path \
 	"$HOME/go/bin" \
 	"$HOME/esp/xtensa-esp32-elf/bin"
 
-alias zshconfig="code ~/.zshrc"
+alias cfg="code ~/.zshrc"
 alias reload="source ~/.zshrc"
 
 alias gummit="zsh ~/utility-scripts/gummit.sh"
@@ -37,7 +37,7 @@ source ~/utility-scripts/f.sh
 
 eval "$(zoxide init zsh)"
 
-FILE=.zshrc-local
+FILE="$HOME/.zshrc-local"
 if test -f "$FILE"; then
-	source $FILE
+	source "$FILE"
 fi

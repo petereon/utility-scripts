@@ -24,7 +24,7 @@ for file in $(git diff --diff-filter=d --name-only --cached); do
 	*.go*)
 		gofmt -w -l "$file" || has_err=true
 		;;
-	*.zsh*)
+	*.*sh*)
 		shfmt -l -s -w "$file"
 		shellcheck -f diff "$file" | git apply
 		;;
