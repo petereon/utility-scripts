@@ -21,7 +21,6 @@ add-to-path \
 	"$HOME/go/bin" \
 	"$HOME/esp/xtensa-esp32-elf/bin"
 
-alias cfg="code ~/.zshrc"
 alias reload="source ~/.zshrc"
 
 alias gummit="zsh ~/utility-scripts/gummit.sh"

@@ -14,7 +14,7 @@ for file in $(git diff --diff-filter=d --name-only --cached); do
 		echo "Error: Not committing .env file"
 		exit 1
 	fi
-	typos "$file"
+
 	case "$file" in
 	*.py*)
 		python3 ~/utility-scripts/hooks/check_ast.py "$file"
